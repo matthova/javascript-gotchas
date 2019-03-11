@@ -14,8 +14,8 @@ Matt's list of javascript 'gotchas' to look out for when debugging
 - Be careful if blending comparators (`&&`, `||`) and ternary. You need to wrap the ternary in parenthesis
   - For example:
     ```js
-      (true && 'foo') || 'a' === 'a' ? 'a' : 'b') // 'a'
-      (true && 'foo') || 'a' === 'b' ? 'a' : 'b') // 'a' wtf?
-      (true && 'foo') || ('a' === 'b' ? 'a' : 'b')) // 'foo' that's more like what we were expecting
-      (false && 'foo') || ('a' === 'b' ? 'a' : 'b')) // 'b' much better
+      console.log((true && 'foo') || 'a' === 'a' ? 'a' : 'b') // 'a'
+      console.log((true && 'foo') || 'a' === 'b' ? 'a' : 'b') // 'a' wtf?
+      console.log((true && 'foo') || ('a' === 'b' ? 'a' : 'b')) // 'foo' that's more like what we were expecting
+      console.log((false && 'foo') || ('a' === 'b' ? 'a' : 'b')) // 'b' much better
    ```
