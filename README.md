@@ -34,3 +34,25 @@ Matt's list of javascript 'gotchas' to look out for when debugging
       console.log((true && 'foo') || ('a' === 'b' ? 'a' : 'b')) // 'foo' that's more like what we were expecting
       console.log((false && 'foo') || ('a' === 'b' ? 'a' : 'b')) // 'b' much better
    ```
+
+- Don't try to be clever when making a multidimensional array
+  - If you want a 2 x 3 array and you you do this
+    ```js
+    const myArray = new Array(2).fill(new Array(3).fill(0))
+    myArray[0][0] = 1;
+    ```
+  - You will get this
+    ```js
+    [[1, 0, 0], [1, 0, 0]]
+    ```
+    because each row will contain a pointer to the same object `new Array(3).fill(0)`.
+ 
+  - Instead do this
+    ```js
+    const rows = 2;
+    const columns = 3;
+    const myArray = new Array(rows);
+    for(let y = 0; y < rows; y++) {
+      myArray[y] = new Array(columns).fill(0);
+    }
+    ```
