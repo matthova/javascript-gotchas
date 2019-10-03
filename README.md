@@ -56,3 +56,5 @@ Matt's list of javascript 'gotchas' to look out for when debugging
       myArray[y] = new Array(columns).fill(0);
     }
     ```
+ 
+ - Are you trying to parse a json objet you pulled from a database? Make sure you've parsed it from a string into an object.
