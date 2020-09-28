@@ -58,3 +58,33 @@ Matt's list of javascript 'gotchas' to look out for when debugging
     ```
  
  - Are you trying to parse a json objet you pulled from a database? Make sure you've parsed it from a string into an object.
+ 
+ - Did you recently expand an object that had two states into one with three states? Be sure you're not falling into this trap:
+   ```js
+     // before
+     emum ConnectionStatus {
+       Disconnected = 'disconnected',
+       Connected = 'connected',
+     }
+     
+     const doSomethingWithConnectionStatus = (status: ConnectionStatus) {
+       if (status !== ConnectionStatus.Connected) {
+         alert('Youre disconnected!');
+       }
+     }
+     
+     // after
+     emum ConnectionStatus {
+       Disconnected = 'disconnected',
+       Connected = 'connected',
+       ConnectedWithVideo = 'connectedWithVideo'
+     }
+     
+     const doSomethingWithConnectionStatus = (status: ConnectionStatus) {
+       if (status !== ConnectionStatus.Connected) {
+         alert('Youre disconnected!');
+         // WRONG! (if you're connected with video).
+         // You need to make sure the added enum values did not affect any existing logic
+       }
+     }
+  ```
