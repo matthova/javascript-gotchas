@@ -87,4 +87,9 @@ Matt's list of javascript 'gotchas' to look out for when debugging
          // You need to make sure the added enum values did not affect any existing logic
        }
      }
-  ```
+   ```
+
+- Are you trying to have an object fixed positioned on mobile chrome? You have to set the following for this to work (og link [here](https://stackoverflow.com/questions/44679794/position-fixed-on-chrome-mobile-causing-element-to-move-on-scroll-up-down))  
+   ```html
+   <meta name="viewport" content="minimum-scale=1">
+   ```
