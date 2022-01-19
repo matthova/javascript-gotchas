@@ -93,3 +93,6 @@ Matt's list of javascript 'gotchas' to look out for when debugging
    ```html
    <meta name="viewport" content="minimum-scale=1">
    ```
+
+- Are you trying to create a ResizeObserver inside a main window, which needs to look at DOM in a popout window?  
+  If so, instead use a ref of the component or window from the popout.
